@@ -1,7 +1,8 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+// vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
 
 export default defineConfig({
-  base: '/lotus-site/',   // <-- important for project pages
   plugins: [react()],
-})
+  base: '/lotus-site/',   // <-- IMPORTANT for GitHub Pages repo-name site
+});

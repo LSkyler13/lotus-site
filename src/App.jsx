@@ -114,8 +114,8 @@ const DATA = {
   },
   social: {
     email: "lotus@vcu.edu",
-    instagram: "https://instagram.com/yourhandle",
-    linkedin: "https://www.linkedin.com/company/yourclub/",
+    instagram: "https://instagram.com/lotusatvcu",
+    linkedin: "https://www.linkedin.com/company/lotus-at-vcu/",
   },
 };
 
