@@ -31,7 +31,7 @@ const COLORS = {
 
 const DATA = {
   brand: {
-    name: "Lotus at VCU",
+    name: "LOTUS at VCU",
     tagline: "Leaders of Tomorrow: United in Success",
     short: "Professional Asian business development organization at VCU",
   },
@@ -256,7 +256,7 @@ function Hero() {
             />
           </div>
           <h1 className="text-4xl sm:text-6xl font-serif tracking-tight text-white">
-            Lotus at VCU
+            LOTUS at VCU
           </h1>
           <p className="mt-3 text-base sm:text-lg text-gray-300 max-w-2xl mx-auto">
             Leaders of Tomorrow: United in Success — a professional Asian business development organization at VCU.
@@ -459,7 +459,7 @@ function Footer() {
             className="h-8 w-8 rounded-full ring-1 ring-[rgba(200,164,77,0.35)]"
           />
           <div className="text-sm text-gray-300">
-            © {new Date().getFullYear()} Lotus at VCU — Leaders of Tomorrow: United in Success
+            © {new Date().getFullYear()} LOTUS at VCU — Leaders of Tomorrow: United in Success
           </div>
         </div>
         <div className="flex items-center gap-3 text-sm">
