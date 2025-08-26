@@ -13,7 +13,13 @@ import { ArrowUpRight, MapPin, Calendar, Linkedin, Mail, ExternalLink } from "lu
 const BASE = (typeof import.meta !== "undefined" && import.meta.env?.BASE_URL) || "/";
 
 // Public assets (placed in /public)
-const LOGO_SRC = `${BASE}lotus-logo.jpg`;
+const LOGO_SRC = `${BASE}logotran.png`;
+<img
+  src={LOGO_SRC}
+  alt="Lotus Logo"
+  className="mx-auto w-72 sm:w-80 md:w-96"
+/>
+
 
 const COLORS = {
   bg: "#0b0b0b",
@@ -37,8 +43,8 @@ const DATA = {
     { id: "board", label: "Board" },
   ],
   hero: {
-    ctaText: "National Organization",
-    ctaHref: "https://www.ascendleadership.org/",
+    ctaText: "Interest Form",
+    ctaHref: "https://forms.gle/your-interest-form", // Change to your interest form
   },
   about: {
     pillars: [
@@ -59,30 +65,30 @@ const DATA = {
       },
     ],
     mapCaption:
-      "Based in Richmond, VA — open to all majors with an interest in business and leadership.",
+      "",
   },
   events: [
     {
-      title: "Kickoff + Interest Meeting",
+      title: "Resume Workshop",
       when: "Sept 10, 6:00–7:30 PM",
-      where: "MCALC, Room 210",
+      where: "321 W Grace St, Richmond, VA 23220",
       blurb:
-        "Meet the founding board, learn about our vision, and connect with peers and mentors.",
+        "Network and get your resume reviewed by the founding members.",
       rsvp: "https://forms.gle/example",
     },
     {
-      title: "Resume x LinkedIn Clinic",
+      title: "Black Iris Networking Night",
       when: "Sept 18, 5:30–7:00 PM",
-      where: "Engineering West 101",
+      where: "321 W Broad St, Richmond, VA 23220",
       blurb:
-        "Bring your resume for live feedback from upper-class mentors and industry guests.",
+        "Network with professionals working in the Greater Richmond Area.",
       rsvp: "https://forms.gle/example2",
     },
   ],
   forms: [
-    { label: "General Interest Form", href: "https://forms.gle/your-interest-form" },
+    { label: "Interest Form", href: "https://docs.google.com/forms/d/e/1FAIpQLSfXdvII0AX3u7Nxo02I5RqXupr1UnultozTQB7F-uGwBuBURA/viewform?usp=header" },
     { label: "Membership Application", href: "https://forms.gle/your-membership-form" },
-    { label: "Partner / Sponsor Inquiry", href: "mailto:lotus@vcu.edu" },
+    { label: "Partner / Sponsor Inquiry", href: "mailto:lotusatvcu@gmail.com" },
   ],
   board: {
     exec: [
@@ -118,14 +124,14 @@ const DATA = {
       },
     ],
     // Add/replace with your officers; leaving a real array prevents runtime errors
-    officers: [
+    // officers: [
       // { role: "Marketing", name: "Officer 1", linkedin: "https://www.linkedin.com/", photo: `${BASE}marketing.jpg` },
-    ],
+    //   { role: "Social Chair", name: "Officer 2", linkedin: "https://www.linkedin.com/", photo: `${BASE}social.jpg` },
   },
   social: {
-    email: "lotus@vcu.edu",
-    instagram: "https://instagram.com/yourhandle",
-    linkedin: "https://www.linkedin.com/company/yourclub/",
+    email: "lotusatvcu@gmail.com",
+    instagram: "https://instagram.com/lotusatvcu",
+    linkedin: "https://www.linkedin.com/company/lotus-at-vcu/",
   },
 };
 
@@ -282,12 +288,11 @@ function About() {
   return (
     <Section id="about" className="py-16 sm:py-24">
       <div className="grid lg:grid-cols-2 gap-12 items-start">
+        {/* Left: copy + pillars */}
         <div>
           <h2 className="text-3xl sm:text-4xl font-serif text-white">Who are we?</h2>
           <p className="mt-4 text-gray-300 max-w-prose">
-            Lotus at VCU empowers APIDA and allied students to grow as principled leaders through
-            mentorship, workshops, and community. We develop professional skills while celebrating culture
-            and building a network that lasts beyond campus.
+          The purpose of Leaders of Tomorrow: United in Success (LOTUS) is to create an environment for future Asian leaders in business, providing them with the resources and networks needed to grow, develop professionally, and build meaningful connections. We strive to foster a strong, inclusive community grounded in shared ambition and lasting social bonds.
           </p>
 
           <dl className="mt-8 grid sm:grid-cols-3 gap-6">
@@ -296,24 +301,24 @@ function About() {
                 key={p.title}
                 className="rounded-2xl border border-[rgba(200,164,77,0.35)] bg-[rgba(200,164,77,0.06)] p-5"
               >
-                <dt className="font-semibold" style={{ color: COLORS.gold }}>
-                  {p.title}
-                </dt>
+                <dt className="font-semibold" style={{ color: COLORS.gold }}>{p.title}</dt>
                 <dd className="text-sm text-gray-300 mt-2">{p.body}</dd>
               </div>
             ))}
           </dl>
         </div>
 
+        {/* Right: simple map card */}
         <div className="relative">
           <div className="aspect-[4/3] rounded-3xl border border-[rgba(200,164,77,0.35)] overflow-hidden bg-black/40">
-            <div className="h-full w-full grid place-items-center p-6">
-              <div className="text-center">
-                <MapPin className="mx-auto mb-3" />
-                <p className="text-gray-300">{DATA.about.mapCaption}</p>
-                <div className="mt-6 text-xs text-gray-400">Campus map embed can go here.</div>
-              </div>
+            <div className="absolute top-3 left-1/2 -translate-x-1/2 flex items-center gap-2 text-gray-300 z-10">
             </div>
+            <img
+              src={`${import.meta.env.BASE_URL}vcumap.jpg`}   // ensure public/vcumap.jpg exists
+              alt="VCU Campus Map"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
@@ -392,7 +397,7 @@ function Board() {
       <h2 className="text-3xl sm:text-4xl font-serif text-white text-center">Executive Board</h2>
       <Grid cards={DATA.board.exec} />
       <div className="mt-14">
-        <h3 className="text-2xl font-serif text-white text-center">Officers</h3>
+        <h3 className="text-2xl font-serif text-white text-center"></h3>
         <Grid cards={DATA.board.officers || []} minimal />
       </div>
     </Section>
