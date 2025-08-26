@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "predeploy": "npm run build && cp dist/index.html dist/404.html", 
+    "predeploy": "npm run build && cp dist/index.html dist/404.html",
     "deploy": "gh-pages -d dist"
-  },
+  },  
   "dependencies": {
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.539.0",
