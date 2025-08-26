@@ -7,7 +7,7 @@ import { ArrowUpRight, MapPin, Calendar, Linkedin, Mail, ExternalLink } from "lu
  * Paste into src/App.jsx in a Vite React app (Tailwind installed).
  */
 
-const LOGO_SRC = "/src/assets/lotus-logo.jpg"; // update if your path differs
+const LOGO_SRC = "/public/lotus-logo.jpg"; // update if your path differs
 
 const COLORS = {
   bg: "#0b0b0b",
@@ -84,31 +84,31 @@ const DATA = {
         role: "President",
         name: "Cole Villanueva",
         linkedin: "https://www.linkedin.com/in/cole-villanueva-vcu/",
-        photo: "/src/assets/cole.jpg",
+        photo: "/public/cole.jpg",
       },
       {
         role: "Vice President",
         name: "Jessica Hoang",
         linkedin: "https://www.linkedin.com/in/jessica-hoang22/",
-        photo: "/src/assets/jessica.jpg",
+        photo: "/public/jessica.jpg",
       },
       {
         role: "Treasurer",
         name: "Malia Feliciano",
         linkedin: "https://www.linkedin.com/in/malia-feliciano-6242b3294/",
-        photo: "/src/assets/malia.jpg",
+        photo: "/public/malia.jpg",
       },
       {
         role: "Logistics Coordinator",
         name: "Ayden Chance",
         linkedin: "https://www.linkedin.com/in/ayden-chance/",
-        photo: "/src/assets/ayden.jpg",
+        photo: "/public/ayden.jpg",
       },
       {
         role: "Professional Development Coordinator",
         name: "Skyler Luangvitham",
         linkedin: "https://www.linkedin.com/in/skyler-luangvitham-273744286/",
-        photo: "/src/assets/skyler.jpg",
+        photo: "/public/skyler.jpg",
       },
     ],
   },
