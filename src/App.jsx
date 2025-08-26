@@ -1,13 +1,19 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, MapPin, Calendar, Linkedin, Mail, ExternalLink } from "lucide-react";
 
 /**
- * Lotus at VCU — Single-file React site (JavaScript)
- * Paste into src/App.jsx in a Vite React app (Tailwind installed).
+ * Lotus at VCU — Single-file React site
+ * -------------------------------------
+ * Put your board photos and lotus-logo.jpg in /public
+ * This file assumes GitHub Pages (BASE_URL set by Vite).
  */
-const BASE = import.meta.env.BASE_URL; // '/lotus-site/' on GH Pages, '/' locally
-const LOGO_SRC = "${BASE}lotus-logo.jpg"; // update if your path differs
+
+// Use Vite’s base so assets work on GitHub Pages and locally
+const BASE = (typeof import.meta !== "undefined" && import.meta.env?.BASE_URL) || "/";
+
+// Public assets (placed in /public)
+const LOGO_SRC = `${BASE}lotus-logo.jpg`;
 
 const COLORS = {
   bg: "#0b0b0b",
@@ -84,46 +90,48 @@ const DATA = {
         role: "President",
         name: "Cole Villanueva",
         linkedin: "https://www.linkedin.com/in/cole-villanueva-vcu/",
-        photo: "${BASE}cole.jpg",
+        photo: `${BASE}cole.jpg`,
       },
       {
         role: "Vice President",
         name: "Jessica Hoang",
         linkedin: "https://www.linkedin.com/in/jessica-hoang22/",
-        photo: "${BASE}jessica.jpg",
+        photo: `${BASE}jessica.jpg`,
       },
       {
         role: "Treasurer",
         name: "Malia Feliciano",
         linkedin: "https://www.linkedin.com/in/malia-feliciano-6242b3294/",
-        photo: "${BASE}malia.jpg",
+        photo: `${BASE}malia.jpg`,
       },
       {
         role: "Logistics Coordinator",
         name: "Ayden Chance",
         linkedin: "https://www.linkedin.com/in/ayden-chance/",
-        photo: "${BASE}ayden.jpg",
+        photo: `${BASE}ayden.jpg`,
       },
       {
         role: "Professional Development Coordinator",
         name: "Skyler Luangvitham",
         linkedin: "https://www.linkedin.com/in/skyler-luangvitham-273744286/",
-        photo: "${BASE}skyler.jpg",
+        photo: `${BASE}skyler.jpg`,
       },
+    ],
+    // Add/replace with your officers; leaving a real array prevents runtime errors
+    officers: [
+      // { role: "Marketing", name: "Officer 1", linkedin: "https://www.linkedin.com/", photo: `${BASE}marketing.jpg` },
     ],
   },
   social: {
     email: "lotus@vcu.edu",
-    instagram: "https://instagram.com/lotusatvcu",
-    linkedin: "https://www.linkedin.com/company/lotus-at-vcu/",
+    instagram: "https://instagram.com/yourhandle",
+    linkedin: "https://www.linkedin.com/company/yourclub/",
   },
 };
 
-// --- Utilities ---------------------------------------------------------------
-
 function useScrollSpy(ids) {
   const [active, setActive] = useState(ids[0]);
-  useMemo(() => {
+  useEffect(() => {
     const handler = () => {
       const offsets = ids
         .map((id) => {
@@ -143,12 +151,8 @@ function useScrollSpy(ids) {
 }
 
 const Section = ({ id, className, children }) => (
-  <section id={id} className={`scroll-mt-24 ${className || ""}`}>
-    {children}
-  </section>
+  <section id={id} className={`scroll-mt-24 ${className || ""}`}>{children}</section>
 );
-
-// --- App ---------------------------------------------------------------------
 
 export default function LotusSite() {
   const active = useScrollSpy(DATA.nav.map((n) => n.id));
@@ -166,8 +170,6 @@ export default function LotusSite() {
     </div>
   );
 }
-
-// --- Nav ---------------------------------------------------------------------
 
 function Nav({ active }) {
   return (
@@ -211,8 +213,6 @@ function Nav({ active }) {
     </div>
   );
 }
-
-// --- Hero --------------------------------------------------------------------
 
 function Starfield() {
   return (
@@ -278,8 +278,6 @@ function Hero() {
   );
 }
 
-// --- About -------------------------------------------------------------------
-
 function About() {
   return (
     <Section id="about" className="py-16 sm:py-24">
@@ -323,8 +321,6 @@ function About() {
   );
 }
 
-// --- Events ------------------------------------------------------------------
-
 function Events() {
   return (
     <Section id="events" className="py-16 sm:py-24">
@@ -365,15 +361,11 @@ function Events() {
   );
 }
 
-// --- Forms -------------------------------------------------------------------
-
 function Forms() {
   return (
     <Section id="forms" className="py-16 sm:py-24">
       <h2 className="text-3xl sm:text-4xl font-serif text-white">Forms</h2>
-      <p className="mt-2 text-gray-300">
-        Get involved — membership, interest, and partner outreach.
-      </p>
+      <p className="mt-2 text-gray-300">Get involved — membership, interest, and partner outreach.</p>
       <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {DATA.forms.map((f) => (
           <a
@@ -394,7 +386,18 @@ function Forms() {
   );
 }
 
-// --- Board -------------------------------------------------------------------
+function Board() {
+  return (
+    <Section id="board" className="py-16 sm:py-24">
+      <h2 className="text-3xl sm:text-4xl font-serif text-white text-center">Executive Board</h2>
+      <Grid cards={DATA.board.exec} />
+      <div className="mt-14">
+        <h3 className="text-2xl font-serif text-white text-center">Officers</h3>
+        <Grid cards={DATA.board.officers || []} minimal />
+      </div>
+    </Section>
+  );
+}
 
 function AvatarCircle({ src, alt }) {
   if (!src) {
@@ -414,17 +417,17 @@ function AvatarCircle({ src, alt }) {
   );
 }
 
-function Grid({ cards, minimal = false }) {
+function Grid({ cards = [], minimal = false }) {
   return (
     <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
       {cards.map((c) => (
-        <div key={c.role + c.name} className="text-center">
+        <div key={`${c.role}-${c.name}`} className="text-center">
           <div className="flex items-center justify-center">
             <AvatarCircle src={c.photo} alt={c.name} />
           </div>
           <div className="mt-3 text-lg text-white">{c.role}</div>
           <div className="text-sm text-gray-300">{c.name}</div>
-          {c.linkedin && (
+          {!minimal && c.linkedin && (
             <a
               href={c.linkedin}
               target="_blank"
@@ -439,21 +442,6 @@ function Grid({ cards, minimal = false }) {
     </div>
   );
 }
-
-function Board() {
-  return (
-    <Section id="board" className="py-16 sm:py-24">
-      <h2 className="text-3xl sm:text-4xl font-serif text-white text-center">Executive Board</h2>
-      <Grid cards={DATA.board.exec} />
-      <div className="mt-14">
-        <h3 className="text-2xl font-serif text-white text-center">Officers</h3>
-        <Grid cards={DATA.board.officers} minimal />
-      </div>
-    </Section>
-  );
-}
-
-// --- Footer ------------------------------------------------------------------
 
 function Footer() {
   return (
