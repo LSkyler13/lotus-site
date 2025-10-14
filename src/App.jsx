@@ -96,7 +96,7 @@ const DATA = {
         role: "President",
         name: "Cole Villanueva",
         linkedin: "https://www.linkedin.com/in/cole-villanueva-vcu/",
-        photo: `${BASE}cole.jpg`,
+        photo: `${BASE}cole-2025.jpg`,
       },
       {
         role: "Vice President",
