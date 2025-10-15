@@ -4,22 +4,12 @@ import { ArrowUpRight, MapPin, Calendar, Linkedin, Mail, ExternalLink } from "lu
 
 /**
  * Lotus at VCU — Single-file React site
- * -------------------------------------
- * Put your board photos and lotus-logo.jpg in /public
- * This file assumes GitHub Pages (BASE_URL set by Vite).
+ * Put your images in /public (e.g., cole-2025.jpg, jessica.jpg, etc.)
+ * Works on GitHub Pages via Vite's BASE_URL.
  */
 
-// Use Vite’s base so assets work on GitHub Pages and locally
 const BASE = (typeof import.meta !== "undefined" && import.meta.env?.BASE_URL) || "/";
-
-// Public assets (placed in /public)
 const LOGO_SRC = `${BASE}logotran.png`;
-<img
-  src={LOGO_SRC}
-  alt="Lotus Logo"
-  className="mx-auto w-72 sm:w-80 md:w-96"
-/>
-
 
 const COLORS = {
   bg: "#0b0b0b",
@@ -44,7 +34,7 @@ const DATA = {
   ],
   hero: {
     ctaText: "Interest Form",
-    ctaHref: "https://forms.gle/your-interest-form", // Change to your interest form
+    ctaHref: "https://forms.gle/your-interest-form",
   },
   about: {
     pillars: [
@@ -64,30 +54,30 @@ const DATA = {
           "We support members with a welcoming, high-energy culture that thrives inside and outside business settings.",
       },
     ],
-    mapCaption:
-      "",
+    mapCaption: "",
   },
   events: [
     {
       title: "Resume Workshop",
       when: "Sept 10, 6:00–7:30 PM",
       where: "321 W Grace St, Richmond, VA 23220",
-      blurb:
-        "Network and get your resume reviewed by the founding members.",
+      blurb: "Network and get your resume reviewed by the founding members.",
       rsvp: "https://forms.gle/example",
     },
     {
       title: "Black Iris Networking Night",
       when: "Sept 18, 5:30–7:00 PM",
       where: "321 W Broad St, Richmond, VA 23220",
-      blurb:
-        "Network with professionals working in the Greater Richmond Area.",
+      blurb: "Network with professionals working in the Greater Richmond Area.",
       rsvp: "https://forms.gle/example2",
     },
   ],
   forms: [
-    { label: "Interest Form", href: "https://docs.google.com/forms/d/e/1FAIpQLSfXdvII0AX3u7Nxo02I5RqXupr1UnultozTQB7F-uGwBuBURA/viewform?usp=header" },
-    { label: "Membership Application", href: "https://forms.gle/your-membership-form" },
+    {
+      label: "Interest Form",
+      href: "https://docs.google.com/forms/d/e/1FAIpQLSfXdvII0AX3u7Nxo02I5RqXupr1UnultozTQB7F-uGwBuBURA/viewform?usp=header",
+    },
+    // { label: "Membership Application", href: "https://forms.gle/your-membership-form" },
     { label: "Partner / Sponsor Inquiry", href: "mailto:lotusatvcu@gmail.com" },
   ],
   board: {
@@ -123,10 +113,10 @@ const DATA = {
         photo: `${BASE}skyler.jpg`,
       },
     ],
-    // Add/replace with your officers; leaving a real array prevents runtime errors
     // officers: [
-      // { role: "Marketing", name: "Officer 1", linkedin: "https://www.linkedin.com/", photo: `${BASE}marketing.jpg` },
+    //   { role: "Marketing", name: "Officer 1", linkedin: "https://www.linkedin.com/", photo: `${BASE}marketing.jpg` },
     //   { role: "Social Chair", name: "Officer 2", linkedin: "https://www.linkedin.com/", photo: `${BASE}social.jpg` },
+    // ],
   },
   social: {
     email: "lotusatvcu@gmail.com",
@@ -135,6 +125,7 @@ const DATA = {
   },
 };
 
+/* =====================  Utilities & Layout  ===================== */
 function useScrollSpy(ids) {
   const [active, setActive] = useState(ids[0]);
   useEffect(() => {
@@ -160,6 +151,7 @@ const Section = ({ id, className, children }) => (
   <section id={id} className={`scroll-mt-24 ${className || ""}`}>{children}</section>
 );
 
+/* =====================  App  ===================== */
 export default function LotusSite() {
   const active = useScrollSpy(DATA.nav.map((n) => n.id));
   return (
@@ -177,6 +169,7 @@ export default function LotusSite() {
   );
 }
 
+/* =====================  Sections  ===================== */
 function Nav({ active }) {
   return (
     <div className="fixed top-0 inset-x-0 z-50 border-b/10 backdrop-blur supports-[backdrop-filter]:bg-black/40 border-b border-[rgba(200,164,77,0.25)]">
@@ -240,7 +233,8 @@ function Hero() {
   return (
     <Section id="home" className="relative">
       <div className="h-[78vh] sm:h-[86vh] grid place-items-center overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(200,164,77,0.08),transparent_55%)]" />
+        {/* Subtle static halo for depth (keep/adjust or remove if you want a pure black bg) */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(200,164,77,0.06),transparent_55%)]" />
         <Starfield />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -292,7 +286,10 @@ function About() {
         <div>
           <h2 className="text-3xl sm:text-4xl font-serif text-white">Who are we?</h2>
           <p className="mt-4 text-gray-300 max-w-prose">
-          The purpose of Leaders of Tomorrow: United in Success (LOTUS) is to create an environment for future Asian leaders in business, providing them with the resources and networks needed to grow, develop professionally, and build meaningful connections. We strive to foster a strong, inclusive community grounded in shared ambition and lasting social bonds.
+            The purpose of Leaders of Tomorrow: United in Success (LOTUS) is to create an environment for future Asian
+            leaders in business, providing them with the resources and networks needed to grow, develop professionally,
+            and build meaningful connections. We strive to foster a strong, inclusive community grounded in shared
+            ambition and lasting social bonds.
           </p>
 
           <dl className="mt-8 grid sm:grid-cols-3 gap-6">
@@ -301,7 +298,9 @@ function About() {
                 key={p.title}
                 className="rounded-2xl border border-[rgba(200,164,77,0.35)] bg-[rgba(200,164,77,0.06)] p-5"
               >
-                <dt className="font-semibold" style={{ color: COLORS.gold }}>{p.title}</dt>
+                <dt className="font-semibold" style={{ color: COLORS.gold }}>
+                  {p.title}
+                </dt>
                 <dd className="text-sm text-gray-300 mt-2">{p.body}</dd>
               </div>
             ))}
@@ -311,10 +310,9 @@ function About() {
         {/* Right: simple map card */}
         <div className="relative">
           <div className="aspect-[4/3] rounded-3xl border border-[rgba(200,164,77,0.35)] overflow-hidden bg-black/40">
-            <div className="absolute top-3 left-1/2 -translate-x-1/2 flex items-center gap-2 text-gray-300 z-10">
-            </div>
+            <div className="absolute top-3 left-1/2 -translate-x-1/2 flex items-center gap-2 text-gray-300 z-10" />
             <img
-              src={`${import.meta.env.BASE_URL}vcumap.jpg`}   // ensure public/vcumap.jpg exists
+              src={`${BASE}vcumap.jpg`} // ensure public/vcumap.jpg exists
               alt="VCU Campus Map"
               className="w-full h-full object-cover"
               loading="lazy"
@@ -392,15 +390,55 @@ function Forms() {
 }
 
 function Board() {
+  const exec = DATA.board.exec;
+  const top = exec.slice(0, 3);
+  const bottom = exec.slice(3);
+
   return (
     <Section id="board" className="py-16 sm:py-24">
       <h2 className="text-3xl sm:text-4xl font-serif text-white text-center">Executive Board</h2>
-      <Grid cards={DATA.board.exec} />
+
+      {/* Top row: 3 across */}
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
+        {top.map((c) => (
+          <BoardCard key={`${c.role}-${c.name}`} c={c} />
+        ))}
+      </div>
+
+      {/* Bottom row: 2 centered */}
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 place-items-center mx-auto lg:max-w-3xl">
+        {bottom.map((c) => (
+          <BoardCard key={`${c.role}-${c.name}`} c={c} />
+        ))}
+      </div>
+
+      {/* Officers (optional) */}
       <div className="mt-14">
-        <h3 className="text-2xl font-serif text-white text-center"></h3>
         <Grid cards={DATA.board.officers || []} minimal />
       </div>
     </Section>
+  );
+}
+
+function BoardCard({ c }) {
+  return (
+    <div className="text-center">
+      <div className="flex items-center justify-center">
+        <AvatarCircle src={c.photo} alt={c.name} />
+      </div>
+      <div className="mt-3 text-lg text-white">{c.role}</div>
+      <div className="text-sm text-gray-300">{c.name}</div>
+      {c.linkedin && (
+        <a
+          href={c.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-3 inline-flex items-center gap-2 text-xs rounded-xl px-3 py-2 border border-[rgba(200,164,77,0.35)] hover:bg-[rgba(200,164,77,0.12)]"
+        >
+          <Linkedin size={14} /> LinkedIn
+        </a>
+      )}
+    </div>
   );
 }
 
