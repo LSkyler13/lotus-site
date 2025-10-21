@@ -34,7 +34,7 @@ const DATA = {
   ],
   hero: {
     ctaText: "Interest Form",
-    ctaHref: "https://forms.gle/your-interest-form",
+    ctaHref: "https://docs.google.com/forms/d/e/1FAIpQLSfXdvII0AX3u7Nxo02I5RqXupr1UnultozTQB7F-uGwBuBURA/viewform?usp=header",
   },
   about: {
     pillars: [
@@ -83,16 +83,16 @@ const DATA = {
   board: {
     exec: [
       {
-        role: "Vice President",
-        name: "Jessica Hoang",
-        linkedin: "https://www.linkedin.com/in/jessica-hoang22/",
-        photo: `${BASE}jessica.jpg`,
-      },
-      {
         role: "President",
         name: "Cole Villanueva",
         linkedin: "https://www.linkedin.com/in/cole-villanueva-vcu/",
         photo: `${BASE}cole-2025.jpg`,
+      },
+      {
+        role: "Vice President",
+        name: "Jessica Hoang",
+        linkedin: "https://www.linkedin.com/in/jessica-hoang22/",
+        photo: `${BASE}jessica.jpg`,
       },
       {
         role: "Treasurer",
