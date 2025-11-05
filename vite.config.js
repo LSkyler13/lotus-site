@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc' // Change this line
+import react from '@vitejs/plugin-react-swc'
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  base: '/',   // or just remove the base line
+  base: '/',           // or omit this line entirely
   plugins: [react()],
 })
