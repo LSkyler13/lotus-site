@@ -59,18 +59,18 @@ const DATA = {
   events: [
     {
       title: "First General Body Meeting",
-      when: "Nov 6, 7:00–8:00 PM",
-      where: "Commons Ballroom, VCU Student Commons",
+      when: "Nov 6, 7:00–8:30 PM",
+      where: "Alumni Board Room, VCU Student Commons",
       blurb: "Discover LOTUS at VCU and connect with the executive board at our inaugural general body meeting.",
       // rsvp: "https://forms.gle/example",
-    },
-    {
-      title: "Resume & Headshot Workshop",
-      when: "Nov 21, 5:30–7:00 PM",
-      where: "Room B2165, Snead Hall",
-      blurb: "Resume review workshop and professional headshot session for members, accompanied by a selection of Asian dishes.",
+    }
+    // {
+      // title: "Resume & Headshot Workshop",
+      // when: "Nov 21, 5:30–7:00 PM",
+      // where: "Room B2165, Snead Hall",
+      // blurb: "Resume review workshop and professional headshot session for members, accompanied by a selection of Asian dishes.",
       // rsvp: "https://forms.gle/example2",
-    },
+    // },
   ],
   forms: [
     {
