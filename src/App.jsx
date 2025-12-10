@@ -58,10 +58,10 @@ const DATA = {
   },
   events: [
     {
-      title: "First General Body Meeting",
-      when: "Nov 6, 7:00–8:30 PM",
-      where: "Alumni Board Room, VCU Student Commons",
-      blurb: "Discover LOTUS at VCU and connect with the executive board at our inaugural general body meeting.",
+      title: "Bites and Business",
+      when: "Dec 4th, 5:00–7:0 PM",
+      where: "Commons Theater, VCU Student Commons",
+      blurb: "Come network, enjoy free bites, and level up your professional game!",
       // rsvp: "https://forms.gle/example",
     }
     // {
