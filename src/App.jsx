@@ -346,7 +346,7 @@ function Hero() {
           >
             Leaders of Tomorrow: United in Success — a professional Asian business development organization at VCU.
           </motion.p>
-          <motion.div 
+          {/* <motion.div 
             className="mt-8 flex items-center justify-center gap-3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -379,7 +379,7 @@ function Hero() {
               {DATA.hero.ctaText}
               <ExternalLink size={16} />
             </motion.a>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </Section>
