@@ -58,10 +58,10 @@ const DATA = {
   },
   events: [
     {
-      title: "Bites and Business",
-      when: "Dec 4th, 5:00–7:0 PM",
-      where: "Commons Theater, VCU Student Commons",
-      blurb: "Come network, enjoy free bites, and level up your professional game!",
+      title: "Coming Soon...",
+      when: "Spring Semester 2026",
+      where: "Viriginia Commonwealth University",
+      //blurb: "",
       // rsvp: "https://forms.gle/example",
     }
     // {
