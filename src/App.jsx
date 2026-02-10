@@ -58,19 +58,12 @@ const DATA = {
   },
   events: [
     {
-      title: "Coming Soon...",
-      when: "Spring Semester 2026",
-      where: "Viriginia Commonwealth University",
+      title: "Resume Workshop",
+      when: "February 11, 2025, 6:30 PM - 9:00 PM",
+      where: "Snead Hall, Room B2165",
       //blurb: "",
       // rsvp: "https://forms.gle/example",
     }
-    // {
-      // title: "Resume & Headshot Workshop",
-      // when: "Nov 21, 5:30–7:00 PM",
-      // where: "Room B2165, Snead Hall",
-      // blurb: "Resume review workshop and professional headshot session for members, accompanied by a selection of Asian dishes.",
-      // rsvp: "https://forms.gle/example2",
-    // },
   ],
   forms: [
     {
@@ -113,10 +106,47 @@ const DATA = {
         photo: `${BASE}skyler.jpg`,
       },
     ],
-    // officers: [
-    //   { role: "Marketing", name: "Officer 1", linkedin: "https://www.linkedin.com/", photo: `${BASE}marketing.jpg` },
-    //   { role: "Social Chair", name: "Officer 2", linkedin: "https://www.linkedin.com/", photo: `${BASE}social.jpg` },
-    // ],
+    officers: [
+      { 
+        role: "Community Engagement Chair", 
+        name: "Kasra Sanatkar", 
+        linkedin: "https://www.linkedin.com/in/kasra-sanatkar-64a675330/", 
+        photo: `${BASE}kasra.jpg` 
+      },
+      { 
+        role: "Intercultural Chair", 
+        name: "Gabriel Tell", 
+        linkedin: "https://www.linkedin.com/in/gabriel-tell/", 
+        photo: `${BASE}gabe.jpg` 
+      },
+      { 
+        role: "Alumni Relations Chair", 
+        name: "Rocky Dicuangco", 
+        linkedin: "https://www.linkedin.com/in/rdicuangco14/", 
+        photo: `${BASE}rocky.jpg` 
+      },
+      { 
+        role: "Marketing Chair", 
+        name: "Annalisa Le", 
+        linkedin: "https://www.linkedin.com/in/annalisale/", 
+        photo: `${BASE}annalisa.jpg` 
+      },
+      
+      { 
+        role: "Intercultural Chair", 
+        name: "Anna Nguyen", 
+        linkedin: "", 
+        photo: "" 
+      },
+  
+      { 
+        role: "Fundraising Chair", 
+        name: "Vince Bernardino", 
+        linkedin: "https://www.linkedin.com/in/vincebernardino/", 
+        photo: `${BASE}vince.jpg` 
+      }
+      
+    ],
   },
   social: {
     email: "lotusatvcu@gmail.com",
@@ -309,7 +339,7 @@ function Hero() {
   return (
     <Section id="home" className="relative">
       <div className="h-[78vh] sm:h-[86vh] grid place-items-center overflow-hidden">
-        {/* Subtle static halo for depth (keep/adjust or remove if you want a pure black bg) */}
+        {/* Subtle static halo for depth */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(200,164,77,0.06),transparent_55%)]" />
         <AnimatedWaveBackground />
         <motion.div
@@ -346,40 +376,6 @@ function Hero() {
           >
             Leaders of Tomorrow: United in Success — a professional Asian business development organization at VCU.
           </motion.p>
-          {/* <motion.div 
-            className="mt-8 flex items-center justify-center gap-3"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <motion.a
-              href="#events"
-              className="rounded-2xl px-5 py-3 text-sm font-medium bg-[rgba(200,164,77,0.16)] border border-[rgba(200,164,77,0.35)] hover:bg-[rgba(200,164,77,0.24)] font-serif"
-              whileHover={{ 
-                scale: 1.02,
-                boxShadow: "0 5px 15px rgba(200,164,77,0.2)"
-              }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            >
-              View Events
-            </motion.a>
-            <motion.a
-              href={DATA.hero.ctaHref}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-2xl px-5 py-3 text-sm font-medium bg-transparent border border-white/20 hover:border-white/35 inline-flex items-center gap-2 font-serif"
-              whileHover={{ 
-                scale: 1.02,
-                boxShadow: "0 5px 15px rgba(255,255,255,0.1)"
-              }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            >
-              {DATA.hero.ctaText}
-              <ExternalLink size={16} />
-            </motion.a>
-          </motion.div> */}
         </motion.div>
       </div>
     </Section>
@@ -587,12 +583,15 @@ function Forms() {
 
 function Board() {
   const exec = DATA.board.exec;
+  const officers = DATA.board.officers;
   const top = exec.slice(0, 3);
   const bottom = exec.slice(3);
 
   return (
     <Section id="board" className="py-16 sm:py-24 relative">
       <FloatingParticles count={25} />
+      
+      {/* --- Executive Board Section --- */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -651,22 +650,52 @@ function Board() {
         ))}
       </motion.div>
 
-      {/* Officers (optional) */}
-      <div className="mt-14">
-        <Grid cards={DATA.board.officers || []} minimal />
-      </div>
+      {/* --- Officer Board Section --- */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 mt-20"
+      >
+        <h2 className="text-2xl sm:text-3xl font-serif text-white text-center">Officer Board</h2>
+      </motion.div>
+
+      <motion.div 
+        className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center relative z-10"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        {officers.map((c, idx) => (
+          <motion.div
+            key={`${c.role}-${c.name}`}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ 
+              duration: 0.5, 
+              delay: idx * 0.1 
+            }}
+          >
+            <BoardCard c={c} />
+          </motion.div>
+        ))}
+      </motion.div>
+
     </Section>
   );
 }
 
 function BoardCard({ c }) {
   return (
-    <div className="text-center">
+    <div className="text-center w-full max-w-[240px]">
       <div className="flex items-center justify-center">
         <AvatarCircle src={c.photo} alt={c.name} />
       </div>
-      <div className="mt-3 text-lg text-white font-serif">{c.role}</div>
-      <div className="text-sm text-gray-300 font-serif">{c.name}</div>
+      <div className="mt-3 text-lg text-white font-serif leading-tight min-h-[1.75em]">{c.role}</div>
+      <div className="text-sm text-gray-300 font-serif mt-1">{c.name}</div>
       {c.linkedin && (
         <motion.a
           href={c.linkedin}
@@ -690,7 +719,7 @@ function BoardCard({ c }) {
 function AvatarCircle({ src, alt }) {
   if (!src) {
     return (
-      <div className="h-24 w-24 rounded-full bg-gradient-to-br from-[rgba(200,164,77,0.25)] to-transparent border border-[rgba(200,164,77,0.35)] grid place-items-center text-sm text-gray-300">
+      <div className="h-24 w-24 rounded-full bg-gradient-to-br from-[rgba(200,164,77,0.25)] to-transparent border border-[rgba(200,164,77,0.35)] grid place-items-center text-sm text-gray-300 font-serif">
         Photo
       </div>
     );
@@ -702,32 +731,6 @@ function AvatarCircle({ src, alt }) {
       className="h-24 w-24 rounded-full object-cover border border-[rgba(200,164,77,0.35)]"
       loading="lazy"
     />
-  );
-}
-
-function Grid({ cards = [], minimal = false }) {
-  return (
-    <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-      {cards.map((c) => (
-        <div key={`${c.role}-${c.name}`} className="text-center">
-          <div className="flex items-center justify-center">
-            <AvatarCircle src={c.photo} alt={c.name} />
-          </div>
-          <div className="mt-3 text-lg text-white">{c.role}</div>
-          <div className="text-sm text-gray-300">{c.name}</div>
-          {!minimal && c.linkedin && (
-            <a
-              href={c.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-3 inline-flex items-center gap-2 text-xs rounded-xl px-3 py-2 border border-[rgba(200,164,77,0.35)] hover:bg-[rgba(200,164,77,0.12)]"
-            >
-              <Linkedin size={14} /> LinkedIn
-            </a>
-          )}
-        </div>
-      ))}
-    </div>
   );
 }
 
