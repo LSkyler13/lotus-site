@@ -72,6 +72,10 @@ const DATA = {
     },
     // { label: "Membership Application", href: "https://forms.gle/your-membership-form" },
     { label: "Partner / Sponsor Inquiry", href: "mailto:lotusatvcu@gmail.com" },
+    {
+      label: "Alumni Database Form",
+      href: "https://docs.google.com/forms/d/e/1FAIpQLSdIqo8c_XQScHmnIctp-8XWjglFLDGPI-qAnrmeD0g_-EFhaw/viewform",
+    }
   ],
   board: {
     exec: [
